@@ -22,11 +22,12 @@ class views_role_based_global_text_handler_extender extends views_handler_area_t
       '#collapsible' => TRUE,
       '#collapsed' => TRUE,
     );
+    $roles_default_value = $this->options['roles_fieldset']['roles'];
     $form['roles_fieldset']['roles'] = array(
       '#type' => 'checkboxes',
       '#options' => drupal_map_assoc(user_roles()),
       '#title' => t('Select Role'),
-      '#default_value' => $this->options['roles_fieldset']['roles'],
+      '#default_value' => isset($roles_default_value) ? $roles_default_value : array(),
       '#description' => t('Only the checked roles will be able to access this value. If no role is selected, available to all.')
     );
   }
@@ -42,6 +43,9 @@ class views_role_based_global_text_handler_extender extends views_handler_area_t
   function render($empty = FALSE) {
     global $user;
     $roles_selected = $this->options['roles_fieldset']['roles'];
+    if (!is_array($roles_selected)) {
+      $roles_selected = array();
+    }
     $any_role_selected = array_filter($roles_selected);
     //If user has the one of the selected role or no role is selected.
     if (array_intersect($user->roles, $roles_selected) || empty($any_role_selected)) {
