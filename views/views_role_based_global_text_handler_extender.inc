@@ -33,11 +33,6 @@ class views_role_based_global_text_handler_extender extends views_handler_area_t
     );
   }
 
-  function options_submit(&$form, &$form_state) {
-    $form_state['values']['options']['roles_fieldset']['roles'] = $form_state['values']['options']['roles_fieldset']['roles'];
-    parent::options_submit($form, $form_state);
-  }
-
   /**
    * Render a text area, using the proper format.
    */
