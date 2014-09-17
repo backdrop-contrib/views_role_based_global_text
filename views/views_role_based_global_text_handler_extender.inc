@@ -2,7 +2,8 @@
 
 /**
  * @file
- * Handler which extends the views_handler_area_text to add roles for global text field.
+ * Handler which extends the views_handler_area_text to add roles for global
+ * text field.
  */
 
 class views_role_based_global_text_handler_extender extends views_handler_area_text {
@@ -28,7 +29,7 @@ class views_role_based_global_text_handler_extender extends views_handler_area_t
       '#options' => drupal_map_assoc(user_roles()),
       '#title' => t('Select Role'),
       '#default_value' => isset($roles_default_value) ? $roles_default_value : array(),
-      '#description' => t('Only the checked roles will be able to access this value. If no role is selected, available to all.')
+      '#description' => t('Only the checked roles will be able to access this value. If no role is selected, available to all.'),
     );
   }
 
@@ -47,7 +48,7 @@ class views_role_based_global_text_handler_extender extends views_handler_area_t
       $roles_selected = array();
     }
     $any_role_selected = array_filter($roles_selected);
-    //If user has the one of the selected role or no role is selected.
+    // If user has the one of the selected role or no role is selected.
     if (array_intersect($user->roles, $roles_selected) || empty($any_role_selected)) {
       return parent::render($empty);
     }
