@@ -11,6 +11,12 @@
 function views_role_based_global_text_views_api() {
   return array(
     'api' => 3,
-    'path' => drupal_get_path('module', 'views_role_based_global_text') . '/views',
+    'path' => backdrop_get_path('module', 'views_role_based_global_text') . '/views',
+  );
+}
+
+function hook_autoload_info() {
+  return array(
+    'views_role_based_global_text_handler_extender' => 'views/views_role_based_global_text_handler_extender.inc',
   );
 }
