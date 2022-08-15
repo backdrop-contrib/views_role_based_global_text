@@ -26,7 +26,7 @@ class views_role_based_global_text_handler_extender extends views_handler_area_t
     $roles_default_value = $this->options['roles_fieldset']['roles'];
     $form['roles_fieldset']['roles'] = array(
       '#type' => 'checkboxes',
-      '#options' => backdrop_map_assoc(user_roles()),
+      '#options' => user_roles(),
       '#title' => t('Select Role'),
       '#default_value' => isset($roles_default_value) ? $roles_default_value : array(),
       '#description' => t('Only the checked roles will be able to access this value. If no role is selected, available to all.'),
