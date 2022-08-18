@@ -32,7 +32,7 @@ Views
 Documentation
 -------------
 Additional documentation is located in the Wiki:
-https://github.com/backdrop-contrib/block_refresh/wiki/Documentation
+https://github.com/backdrop-contrib/views_role_based_global_text/wiki/Documentation
 
 Issues
 ------
