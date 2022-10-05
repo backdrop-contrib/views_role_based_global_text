@@ -23,12 +23,13 @@ class views_role_based_global_text_handler_extender extends views_handler_area_t
       '#collapsible' => TRUE,
       '#collapsed' => TRUE,
     );
-    $roles_default_value = $this->options['roles_fieldset']['roles'];
+    // Get the list of roles, indexed by name, with value 1 if selected, 0 if not. Default to an empty array if not yet defined.
+    $roles_default_value = isset($this->options['roles_fieldset']['roles']) ? $this->options['roles_fieldset']['roles'] : array();
     $form['roles_fieldset']['roles'] = array(
       '#type' => 'checkboxes',
       '#options' => user_roles(),
       '#title' => t('Select Role'),
-      '#default_value' => isset($roles_default_value) ? $roles_default_value : array(),
+      '#default_value' => $roles_default_value,
       '#description' => t('Only the checked roles will be able to access this value. If no role is selected, available to all.'),
     );
   }
